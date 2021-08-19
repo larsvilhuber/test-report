@@ -21,15 +21,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up R ${{ matrix.r-version }}
-        uses: r-lib/actions/setup-r@ffe45a39586f073cc2e9af79c4ba563b657dc6e3
+      # Runs a set of commands using the runners shell
+      - name: Run docker for R 
+        uses: docker://larsvilhuber/rmarkdown:v2021-08-19 
         with:
-          r-version: ${{ matrix.r-version }}
-      - name: Install dependencies
-        run: |
-          install.packages(c("remotes", "rmarkdown"))
-          remotes::install_deps(dependencies = TRUE)
-        shell: Rscript {0}
-      - name: Compile Rmarkdown
-        run: rmarkdown::render('index.Rmd')
-        shell: Rscript {0}
+          args: "R -e rmarkdown::render('index.Rmd')"

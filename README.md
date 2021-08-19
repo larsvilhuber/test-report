@@ -22,3 +22,5 @@ docker run -it --rm ^
   larsvilhuber/rmarkdown:v2021-08-19 ^
    R -e rmarkdown::render('index.Rmd')
 ```
+
+Page available at [https://larsvilhuber.github.io/test-report/](https://larsvilhuber.github.io/test-report/).
